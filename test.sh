@@ -1,6 +1,6 @@
-chmod +x ./ubuntu/hello-server
+chmod +x ./linux/hello-server
 
-./ubuntu/hello-server &
+./linux/hello-server &
 
 sleep 3
 

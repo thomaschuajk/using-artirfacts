@@ -36,5 +36,6 @@ jobs:
       uses: actions/download-artifact@v1.0.0
       with:
         name: executable
+        path: ./${{ env.FILE_NAME }}
 
     - run: source ./test.sh

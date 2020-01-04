@@ -7,26 +7,33 @@ env:
 
 jobs:
   build:
-    name: Build
+    name: Build ${{ env.FILE_NAME }}
     runs-on: ubuntu-latest
     steps:
 
-    - name: Set up Go 1.13
-      uses: actions/setup-go@v1
-      with:
-        go-version: 1.13
-      id: go
-
-    - name: Check out code into the Go module directory
+    - name: Check out code
       uses: actions/checkout@v1
 
     - name: Build
-      run: |
-        go build ${{ env.FILE_NAME }}.go
-        ls -ltr
+      run: go build ${{ env.FILE_NAME }}.go
         
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: executable
         path: ./${{ env.FILE_NAME }}
+
+  test:
+    name: Test ${{ env.FILE_NAME }}
+    runs-on: [ubuntu-latest]
+    needs: [build]
+    steps:
+
+    - name: Download artifact
+      uses: actions/download-artifact@v1.0.0
+      with:
+        name: executable
+
+    - run: |
+        ls -ltr
+        find .

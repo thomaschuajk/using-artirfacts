@@ -20,3 +20,9 @@ jobs:
       run: |
         go build hello-server.go
         ls -ltr
+        
+    - name: Upload Artifact
+      uses: actions/upload-artifact
+      with:
+        name: executable
+        path: hello-server

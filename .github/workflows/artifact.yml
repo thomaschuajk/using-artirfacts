@@ -7,14 +7,14 @@ env:
 
 jobs:
   build:
-    name: Build ${{ env.FILE_NAME }}
+    name: Build
     runs-on: ubuntu-latest
     steps:
 
     - name: Check out code
       uses: actions/checkout@v1
 
-    - name: Build
+    - name: Build ${{ env.FILE_NAME }}
       run: go build ${{ env.FILE_NAME }}.go
         
     - name: Upload artifact
@@ -24,7 +24,7 @@ jobs:
         path: ./${{ env.FILE_NAME }}
 
   test:
-    name: Test ${{ env.FILE_NAME }}
+    name: Test 
     runs-on: [ubuntu-latest]
     needs: [build]
     steps:

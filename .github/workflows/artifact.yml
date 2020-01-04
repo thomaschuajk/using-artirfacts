@@ -1,8 +1,11 @@
 name: artifact
+
 on: [push]
+
+env:
+  FILE_NAME: hello-server
+
 jobs:
-    env:
-      FILE_NAME: hello-server
   build:
     name: Build
     runs-on: ubuntu-latest

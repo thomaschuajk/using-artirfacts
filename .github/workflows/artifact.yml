@@ -20,13 +20,13 @@ jobs:
     - name: Build ${{ env.FILE_NAME }} for windows-latest
       run: GOOS=windows GOARCH=amd64 go build ${{ env.FILE_NAME }}.go
       
-    - name: Upload artifact for ubuntu
+    - name: Upload artifact for linux
       uses: actions/upload-artifact@v1.0.0
       with:
         name: linux
         path: ./${{ env.FILE_NAME }}
 
-    - name: Upload artifact
+    - name: Upload artifact for windows
       uses: actions/upload-artifact@v1.0.0
       with:
         name: windows
@@ -44,7 +44,7 @@ jobs:
     - name: Download artifact
       uses: actions/download-artifact@v1.0.0
       with:
-        name: executable
+        name: linux
 
     - name: Test ${{ env.FILE_NAME }}
       run: source ./test.sh

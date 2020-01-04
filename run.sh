@@ -1,4 +1,4 @@
-./shut &
+./hello-server &
 sleep 3
 
 for i in Anakin Luke Leia Kylo Rey;

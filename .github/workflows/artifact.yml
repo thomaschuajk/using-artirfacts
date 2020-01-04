@@ -37,4 +37,5 @@ jobs:
       with:
         name: executable
 
-    - run: source ./test.sh
+    - name: Test ${{ env.FILE_NAME }}
+      run: source ./test.sh

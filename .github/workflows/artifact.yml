@@ -1,7 +1,8 @@
 name: artifact
 on: [push]
 jobs:
-
+    env:
+      FILE_NAME: hello-server
   build:
     name: Build
     runs-on: ubuntu-latest
@@ -18,11 +19,11 @@ jobs:
 
     - name: Build
       run: |
-        go build hello-server.go
+        go build ${{ env.FILE_NAME }}.go
         ls -ltr
         
     - name: Upload artifact
       uses: actions/upload-artifact@v1.0.0
       with:
         name: executable
-        path: .
+        path: ./${{ env.FILE_NAME }}
